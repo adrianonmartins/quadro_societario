@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+    <div class = "row">
+        <div class = "col-4 offset-4">
+            <h1>Formulário de Login</h1>
+            {% if erro %}
+                <div>{{ erro.messagekey|trans(erro.messageData, 'security') }}</div>
+            {% endif %}
+            <form action = "{{ path('app_login') }}" method = "post">
+                <input type = "hidden" name = "_target_path" value = "/login" />
+
+                <label for = "username" class = "form-label" >Usuario</label>
+                <input type = "text" class = "form-control" id = "username" name = "_username" value = "{{ lastUsername}}" />
+
+                <label for = "password" class = "form-label">Senha</label>
+                <input type = "password" class = "form-control" id = "password" name = "_password" />
+                <input type = "hidden" name = "_target_path" value = "/empresas">
+                <button type = "submit" class = "btn btn-primary"> Entrar </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

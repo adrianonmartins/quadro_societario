@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Cadastre-se</h1>
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.nome) }}
+        {{ form_row(registrationForm.username , {
+            label: 'Usuário'
+        }) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Senha'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms, {
+            label: 'Aceitar Termos'
+        }) }}
+
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}

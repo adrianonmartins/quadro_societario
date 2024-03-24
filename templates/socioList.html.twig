@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ titulo}} {% endblock %}
+{% block body %}
+<h1> {{ titulo }}</h1>
+<a href = "{{ path('add_socio') }}" class = "btn btn-primary">+ Adicionar</a>
+<table class="table">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Nome</td>
+            <td>CPF</td>
+            <td>Ações</td>
+        </tr>
+    </thead>
+    <tboby>
+        {% for socio in socios %}
+            <tr>
+                <td>{{ socio.id }}</td>
+                <td>{{ socio.nome }}</td>
+                <td>{{ socio.cpf }}</td>
+                <td>
+                    <a href = "{{ path('edit_socio',{id:socio.id}) }}" class="btn btn-primary">Editar</a>
+                    <a href = "{{ path('excluir_socio',{id:socio.id}) }}" class="btn btn-primary">Excluir</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tboby>
+</table>
+{% endblock body %}
