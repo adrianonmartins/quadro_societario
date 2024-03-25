@@ -18,7 +18,10 @@ class Socios
     #[ORM\Column(type: 'string')]
     private string $cpf;
 
-    #[ORM\ManyToOne(targetEntity: Empresas::class, inversedBy: 'socios')]
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Empresas", inversedBy="socios")
+     * @ORM\JoinColumn(name="empresa_id", referencedColumnName="id", onDelete="CASCADE")
+     */
     private Empresas $empresas;
 
     public function getId(): ?int

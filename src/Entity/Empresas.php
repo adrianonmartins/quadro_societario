@@ -4,6 +4,7 @@
 use App\Repository\EmpresasRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
  #[ORM\Entity(repositoryClass: EmpresasRepository::class)]
@@ -17,6 +18,15 @@ use Doctrine\ORM\Mapping as ORM;
     private int|null $id;
 
     #[ORM\Column(type: 'string')]
+    /**
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "O campo razão Social deve conter pelo menos {{ limit }} caracteres",
+     *      maxMessage = "O campo razão Social não pode conter mais que {{ limit }} caracteres"
+     * )
+     */
     private string $razaosocial;
 
     #[ORM\Column(type: 'string')]

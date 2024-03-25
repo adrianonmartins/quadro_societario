@@ -41,8 +41,9 @@ class SociosController extends AbstractController
 
             return $this->redirectToRoute('lista_socio');
         }
-        $data['titulo']= 'Adicionar novo Socio';
-        $data['form'] = $form;
+        
+        $data['titulo'] = 'Adicionar novo Socio';
+        $data['form']   = $form;
         $data['msg']    = $msg;
 
         return $this->render('socios.html.twig',$data);
